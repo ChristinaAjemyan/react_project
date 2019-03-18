@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-bootstrap'
 import Users from '../users/user.omponent'
+import Points from '../points/points.components'
 
 
 class Header extends Component {
@@ -11,7 +12,7 @@ class Header extends Component {
                     <Users/>
                 </Tab>
                 <Tab eventKey="points" title="Points">
-                   bbb
+                   <Points/>
                 </Tab>
             </Tabs>
         );
