@@ -30,7 +30,23 @@ class PointDetails extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="region">Region</label>
-                            <input type="text" value={this.state.point.region || ''} onChange={this.handleChange.bind(this)} className="form-control" id="region" name="emregionail" placeholder="Enter Region" required/>
+                            <input type="text" value={this.state.point.region || ''} onChange={this.handleChange.bind(this)} className="form-control" id="region" name="region" placeholder="Enter Region" required/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="city">City</label>
+                            <input type="text" value={this.state.point.city || ''} onChange={this.handleChange.bind(this)} className="form-control" id="city" name="city" placeholder="Enter City" required/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="street">Street</label>
+                            <input type="text" value={this.state.point.street || ''} onChange={this.handleChange.bind(this)} className="form-control" id="street" name="street" placeholder="Enter Street" required/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="geo">Geo Location</label>
+                            <input type="text" value={this.state.point.geo || ''} onChange={this.handleChange.bind(this)} className="form-control" id="geo" name="geo" placeholder="Enter Geolocation" required/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="date">Date</label>
+                            <input type="text" value={this.state.point.date || ''} onChange={this.handleChange.bind(this)} className="form-control" id="date" name="date" placeholder="Enter Date" required/>
                         </div>
                         <button type="submit" className="btn btn-primary user-save">Save</button>
                     </form>
