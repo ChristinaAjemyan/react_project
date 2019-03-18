@@ -3,6 +3,7 @@ import {Tabs, Tab} from 'react-bootstrap'
 import Users from '../users/user.omponent'
 import Points from '../points/points.components'
 import UserDetails from '../userDetails/userDetails.component'
+import PointDetails from '../pointDetails/pointDetails.component'
 
 
 class Header extends Component {
@@ -17,15 +18,23 @@ class Header extends Component {
               type==='user'? this.setState({user: item}):this.setState({point:item}) 
             },100)
         }
-        this.child = React.createRef();
+        this.childUser = React.createRef();
     }
     saveUserInfo(user, e){
         e.preventDefault()
-        this.child.current.changeUserInfo(user)
+        this.childUser.current.changeUserInfo(user)
+    }
+    savePointInfo(user, e){
+        e.preventDefault()
+        this.childPoint.current.changeUserInfo(user)
     }
     deleteUser(userId, e){
         e.preventDefault()
-        this.child.current.deleteUser(userId)
+        this.childUser.current.deleteUser(userId)
+    }
+    deletePoint(userId, e){
+        e.preventDefault()
+        this.childPoint.current.deleteUser(userId)
     }
     
     render() {
@@ -35,9 +44,9 @@ class Header extends Component {
                     <div className="main">
                         <div className="row">
                             <div className="col-md-3">
-                                <Users ref={this.child} handleSelect={this.handleSelect}/>
+                                <Users ref={this.childUser} handleSelect={this.handleSelect}/>
                             </div>
-                            <div className="col-md-8">
+                            <div className="col-md-9">
                                 <UserDetails user={this.state.user} saveUserInfo={this.saveUserInfo.bind(this)} deleteUser={this.deleteUser.bind(this)}/>
                             </div>
                         </div>
@@ -46,11 +55,11 @@ class Header extends Component {
                 <Tab eventKey="points" title="Points">
                     <div className="main">
                         <div className="row">
-                            <div className="col-md-3">
-                                <Points />
+                            <div className="col-md-4">
+                                <Points ref={this.childPoint} handleSelect={this.handleSelect}/>
                             </div>
                             <div className="col-md-8">
-
+                                <PointDetails point={this.state.point} savePointInfo={this.savePointInfo.bind(this)} deletePoint={this.deletePoint.bind(this)}/>
                             </div>
                         </div>
                     </div>

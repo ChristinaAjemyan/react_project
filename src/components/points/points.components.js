@@ -7,6 +7,7 @@ import List from '../list/list.component'
 class Points extends Component {
   constructor(props){
     super(props)
+    this.handleSelect=props.handleSelect;
     this.state={
       points: [
         {
@@ -124,9 +125,23 @@ class Points extends Component {
 
   render() {
     return (
-     <div className="lists">
-      <List points={this.state.points} />     
-     </div>
+      <div className="lists">
+        <div className="row">
+          <div className="col-md-5">
+            <p className="m-2">Select from Points</p>
+          </div>
+          <div className="col-md-3">
+            <select className="form-control">
+             <option>Default select</option>
+            </select>
+          </div>
+          <div className="col-md-4">
+            <button className="btn btn-success px-4" onClick={this.handleSelect.bind(this,{},'point')}>Add Point</button>
+          </div>
+        </div>
+          
+        <List points={this.state.points} onPointSelect={this.handleSelect}/>
+      </div>
     );
   }
 }
