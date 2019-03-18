@@ -124,7 +124,9 @@ class Points extends Component {
 
   render() {
     return (
-      <List points={this.state.points}/>
+     <div className="lists">
+      <List points={this.state.points} />     
+     </div>
     );
   }
 }

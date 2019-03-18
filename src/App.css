@@ -2,5 +2,31 @@
   text-align: center;
 }
 .main {
-  text-align: center;
+  margin-top: 10px 
+}
+.main .lists li {
+  list-style: none;
+  cursor: pointer;
+  margin: 5px 0;
+  font-weight: 600;
+  color: rgb(0, 0, 110)
+}
+.lists {
+  border-right: 1px solid #e8e8e8;
+}
+.user-form {
+  padding: 20px 10px 30px 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  text-align: center
+}
+.user-form .form-group {
+  text-align: left
+}
+.user-save {
+  width: 200px;
+  margin: 0 auto
+}
+.user-details .delete-button {
+  float: right;
 }

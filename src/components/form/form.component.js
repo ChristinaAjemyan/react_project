@@ -5,8 +5,8 @@ class Form extends Component {
     render() {
         return (
             <form>
-                <input type='text' name='userName'/>
-                <input type='password' name='password'/>
+                <input type='text' name='name'/>
+                <input type='text' name='email'/>
             </form>
         );
     }

@@ -3,10 +3,6 @@ import './App.css';
 import Header from './components/header/header.component'
 
 class App extends Component {
-  constructor(){
-    super()
-    console.log('aaa')
-  }
   render() {
     return (
       <div className="App">
