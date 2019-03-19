@@ -19,6 +19,7 @@ class Header extends Component {
             },100)
         }
         this.childUser = React.createRef();
+        this.childPoint = React.createRef();
     }
     saveUserInfo(user, e){
         e.preventDefault()
@@ -26,15 +27,15 @@ class Header extends Component {
     }
     savePointInfo(user, e){
         e.preventDefault()
-        this.childPoint.current.changeUserInfo(user)
+        this.childPoint.current.changePointInfo(user)
     }
     deleteUser(userId, e){
         e.preventDefault()
         this.childUser.current.deleteUser(userId)
     }
-    deletePoint(userId, e){
+    deletePoint(id, e){
         e.preventDefault()
-        this.childPoint.current.deleteUser(userId)
+        this.childPoint.current.deletePoint(id)
     }
     
     render() {
