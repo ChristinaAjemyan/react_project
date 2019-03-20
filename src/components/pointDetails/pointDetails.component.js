@@ -17,13 +17,10 @@ class PointDetails extends Component {
     }
     componentWillReceiveProps(nextProps) {
         this.setState({point: nextProps.point})
-        let date = new Date(+nextProps.point.date)
+        let date = nextProps.point.date?new Date(+nextProps.point.date): new Date(); 
         this.setState({
             point: Object.assign({},nextProps.point, {date: `${date.getFullYear()}-${date.getMonth()<9?'0'+(date.getMonth()+1):date.getMonth()+1}-${date.getDate()}`})
         })
-        console.log(nextProps.point.date,`${date.getFullYear()}-${date.getMonth()<9?'0'+(date.getMonth()+1):date.getMonth()+1}-${date.getDate()}`)
-        
-      
     }
     handleChange(e){
         this.setState({point: Object.assign(this.state.point, {[e.target.name]: e.target.value})}) 
