@@ -37,6 +37,7 @@ class Points extends Component {
   }
   changePointInfo(point){
     let points;
+    point.date=new Date(point.date).getTime()
     if(this.state.points.find(el => el.id===point.id)){
       points=this.state.points.map(e=> e.id===point.id? e=point: e)
     }else {

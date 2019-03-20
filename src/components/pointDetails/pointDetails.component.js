@@ -8,7 +8,7 @@ class PointDetails extends Component {
         this.state = {
             point: Object.assign({},props.point),
             users: usersData
-        }   
+        }
         this.savePointInfo = props.savePointInfo  
         this.deletePoint = props.deletePoint;
         this.options = this.state.users.map((el,index)=>{
@@ -17,6 +17,13 @@ class PointDetails extends Component {
     }
     componentWillReceiveProps(nextProps) {
         this.setState({point: nextProps.point})
+        let date = new Date(+nextProps.point.date)
+        this.setState({
+            point: Object.assign({},nextProps.point, {date: `${date.getFullYear()}-${date.getMonth()<9?'0'+(date.getMonth()+1):date.getMonth()+1}-${date.getDate()}`})
+        })
+        console.log(nextProps.point.date,`${date.getFullYear()}-${date.getMonth()<9?'0'+(date.getMonth()+1):date.getMonth()+1}-${date.getDate()}`)
+        
+      
     }
     handleChange(e){
         this.setState({point: Object.assign(this.state.point, {[e.target.name]: e.target.value})}) 
@@ -51,7 +58,7 @@ class PointDetails extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="date">Date</label>
-                            <input type="text" value={this.state.point.date || ''} onChange={this.handleChange.bind(this)} className="form-control" id="date" name="date" placeholder="Enter Date" required/>
+                            <input type="date" value={this.state.point.date || ''} onChange={this.handleChange.bind(this)} className="form-control" id="date" name="date" placeholder="Enter Date" required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="user">User</label>
