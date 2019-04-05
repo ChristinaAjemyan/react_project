@@ -15,6 +15,9 @@ class List extends Component {
     }
     this.handleSelect = props.handleSelect
   }
+  componentWillReceiveProps(nextProps){
+    this.setState({users:nextProps.users})
+  }
   selectUser(e){
     let value = e.target? e.target.value: e;
     this.setState({selectedUser: value})

@@ -3,10 +3,13 @@ import UserDetails from '../userDetails/userDetails.component'
 import PointDetails from '../pointDetails/pointDetails.component'
 import {usersData, pointsData} from '../../data'
 import List from '../list/list.component'
+import RequestService from '../../requests'
+
 
 class Home extends Component {
     constructor(props){
         super(props);
+        this.requestService= new RequestService()
         this.state={
             view: 'users',
             users: usersData,
@@ -15,11 +18,29 @@ class Home extends Component {
             point: {}
         }
         this.handleSelect = (item, type)=>{
-            setTimeout(()=>{
-              type==='user'? this.setState({user: item}):this.setState({point:item}) 
-            },100)
+           console.log(item.id)
+           if(type==="user"){
+                this.requestService.getUserById(item.id)
+                    .then(res=>{
+                        this.setState({user:res.data[0]})
+                    })
+           }else {
+                this.requestService.getPointById(item.id)
+                .then(res=>{
+                    this.setState({point:res.data[0]})
+                })
+           }
+           
         }
         this.childList = React.createRef();
+        this.requestService.getUsers()
+            .then(res=>{
+              this.setState({users: res.data})
+            })
+        this.requestService.getPoints()
+            .then(res=>{
+              this.setState({points: res.data})
+            })
     }
     changeView(v){
         this.setState({view: v})

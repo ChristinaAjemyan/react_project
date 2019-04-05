@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/users.actions'
+import RequestService from '../../requests'
 
 
 class UserDetails extends Component {
     constructor(props){
         super(props);
+        this.requestService= new RequestService()
         this.state = {
             user: Object.assign({},props.user,)
         }   
         this.saveUserInfo = props.saveUserInfo  
         this.deleteUser = props.deleteUser  
     }
+    componentWillMount(){
+       
+    }
     componentWillReceiveProps(nextProps) {
-        this.setState({user: nextProps.user})
+        if(nextProps.id){
+            this.requestService.getUserById(nextProps.id)
+                .then(res=>{
+                    this.setState({user: res.data[0]})
+                })
+        }
     }
     handleChange(e){
         this.setState({user: Object.assign(this.state.user, {[e.target.name]: e.target.value})}) 
@@ -41,4 +53,9 @@ class UserDetails extends Component {
     }
 }
 
-export default UserDetails;
+const mapStateToProps = state => ({
+    user: state.users.user,
+    id: state.users.userId
+})
+
+export default connect(mapStateToProps, {fetchUser})(UserDetails);
